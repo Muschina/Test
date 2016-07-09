@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.app-container {
+	font-family: 'Source Sans Pro', sans-serif;
+	width: 100%;
+	height: 100vh;
+	background: url(app_backgound.jpg);
+	background-size: contain;
+	padding: 10px; 
+}
+
+.app-navigation {
+	margin: 20px;
+	margin-left: 10%;
+	
+	a {
+		text-decoration: none;
+		color: #FFFFFF;
+		&:not(:first-child) {
+			margin-left: 20px;
+		}
+		&:hover{
+			color: #FBBE89;
+		}
+	}
+}
+
+.active-link {
+	font-weight: bold;
+	color: #FBBE89 !important;
+	border-bottom: 2px solid #FBBE89;
+}
+
+.content-container {
+	width: 80%;
+	height: 80%;
+	margin: auto;
+	background: green;
+}
+
