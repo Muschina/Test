@@ -3,10 +3,15 @@
 	padding: 0;
 }
 
+body {
+	overflow-y: hidden;
+}
+
 .app-container {
 	font-family: 'Source Sans Pro', sans-serif;
 	width: 100%;
 	height: 100vh;
+	min-width: 610px;
 	background: url(app_backgound.jpg);
 	background-size: contain;
 	padding: 10px; 
@@ -19,6 +24,8 @@
 	a {
 		text-decoration: none;
 		color: #FFFFFF;
+		font-size: 20px;
+		text-shadow: 1px 2px 2px #000;
 		&:not(:first-child) {
 			margin-left: 20px;
 		}
@@ -32,12 +39,15 @@
 	font-weight: bold;
 	color: #FBBE89 !important;
 	border-bottom: 2px solid #FBBE89;
+	box-shadow: 0 1.5px 0 #000;
 }
 
 .content-container {
 	width: 80%;
 	height: 80%;
 	margin: auto;
+	border: 5px solid #954613;
 	background: green;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);;
 }
 
