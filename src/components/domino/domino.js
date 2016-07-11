@@ -36,17 +36,15 @@ export default class Domino extends Component {
 
 	newDominoValidate(stateName, e) {
 		let target = e.target;
-		let empty = (target.value.length) ? false : true;
-		this.setState({['' + stateName]:empty}, () => {
+		let empty = (target.value.trim().length) ? false : true;
+		this.setState({['' + stateName]: empty}, () => {
 			if(isNaN(target.value) || target.value < 0 || target.value > 6) {
 				this.setState({formValidateError: true});
-				if (this.state['' + stateName] === false) {
-					target.className = 'error';
-				}
+				target.className = (empty === false) ? 'error' : '';
 			} 
 			else {
 					this.setState({formValidateError: false})
-					target.className = (this.state['' + stateName] === false) ? 'success' : '';
+					target.className = (empty === false) ? 'success' : '';
 			}
 		});	
 	}
