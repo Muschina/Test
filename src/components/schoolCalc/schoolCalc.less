@@ -1,10 +1,74 @@
 .calc-container {
-	height: 100%;
+	height: calc(~'100% - 38px');
+	overflow: scroll; 
+	padding: 20px;
+	font-family: 'Special Elite';
+
 	color: #FFFFFF;
 	box-shadow: inset 0px 0px 20px rgba(0,0,0,0.9);
 	background: linear-gradient(to right, rgba(58,65,58,1) 0%, rgba(47,45,47,1) 100%);
+	button {
+		outline: none;
+		background-color: transparent;
+		color: white;
+		padding: 2px 3px;
+		&:hover {
+			color: blue;
+			cursor: pointer;
+		}
+		&:disabled {
+			color: #EEEEEE;
+			background: #BBBBBB;
+			cursor: default;
+		}
+	}
+	h2 {
+		margin-bottom: 20px;
+	}
 }
 
-.hidden {
-	display: none;
+.calc-content-container {
+	border-top: 2px solid #FFFFFF;
+}
+
+.calc-links-container {
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	div {
+		vertical-align: middle;
+		border: 2px solid #FFFFFF;
+		border-bottom: none;
+		border-left: none;
+		&:first-child {
+			border-left: 2px solid #FFFFFF;
+		}
+	}
+	button {
+		border: none;
+		padding: 5px 20px 5px 10px;
+	}
+}
+
+.calc-grade-add {
+	display: inline-block;
+	margin-left: 5px;
+	padding: 1px 4px !important;
+	border: 2px solid #FFFFFF !important;
+}
+
+.calc-GPA {
+	font-weight: bold;
+	color: blue;
+}
+
+.calc-active-link {
+	background: #FFFFFF;
+	button {
+		color: blue !important;
+		font-weight: bold;
+	}	
+}
+.calc-grade-del {
+	padding: 5px 3px !important;
 }

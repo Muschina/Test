@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Students from './students';
 
+import './grade.less';
+
 export default class Grade extends Component {
   constructor() {
     super();
     this.state = {
       gradeGPA: 0,
-      students: [{
-        name: 'Vasya Pupkin',
-        GPA: 4.8
-      }, {
-        name: 'Petya Vasechkin',
-        GPA: 3.2
-      }],
+      students: [],
       nameEmpty: true,
       GPAempty: true,
       nameError: false,
@@ -67,7 +63,8 @@ export default class Grade extends Component {
     e.preventDefault();
     let name = this.refs.name;
     let GPA = this.refs.GPA;
-    this.setState({students:  this.state.students.concat([{name: name.value, GPA: +GPA.value}])}, 
+    this.setState({ students:  this.state.students.concat([{name: name.value, GPA: +GPA.value}]),
+                    nameEmpty: true, GPAempty: true}, 
                               this.gradeGPAcalculate);
         
     name.value = GPA.value = null;
@@ -92,14 +89,14 @@ export default class Grade extends Component {
   render() {
     return (
       <div className={'calc-content ' + (this.props.visible === this.props.number ? '' : 'hidden')}>
-        <form>
+        <form className='calc-form-name'>
           <label htmlFor='gradeName'>GRADE
             <input ref='gradeName' id='gradeName' onChange={::this.gradeNameChange}/>
           </label>
         </form>
-        <span>GRADE GPA - {this.state.gradeGPA}</span>
+        <span>GRADE GPA - <span className='calc-GPA'>{this.state.gradeGPA}</span></span>
         <form name='students'>
-          <table>
+          <table className='calc-table'>
             <tbody>
               <tr>
                 <th>NAME</th><th>GPA</th>
@@ -110,21 +107,24 @@ export default class Grade extends Component {
                 )
               )}
               <tr>
-                
-                <td><input ref='name' form='students' onChange={::this.nameValidate}/></td>
-                <td><input ref='GPA' form='students' onChange={::this.GPAvalidate}/></td>
+                <td className='calc-table-input'>
+                  <input ref='name' form='students' onChange={::this.nameValidate}/>
+                </td>
+                <td className='calc-table-input'>
+                  <input ref='GPA' form='students' onChange={::this.GPAvalidate}/>
+                </td>
                 <td><button form='students' disabled={this.state.nameEmpty || 
                       this.state.GPAempty || this.state.nameError || this.state.GPAerror} 
-                      onClick={::this.studentAdd}>ADD</button></td>
-                
+                      onClick={::this.studentAdd}>ADD</button>
+                </td>                
               </tr>
             </tbody>
           </table>
         </form>
-        <div className={'danger ' + (this.state.nameError ? '' : 'hidden')}>
+        <div className={'danger gradient ' + (this.state.nameError ? '' : 'hidden')}>
           Name should contain only Latin characters, underscores, dashes and spaces, 
           and begin with a capital letter.</div>
-        <div className={'danger ' + (this.state.GPAerror ? '' : 'hidden')}> 
+        <div className={'danger gradient ' + (this.state.GPAerror ? '' : 'hidden')}> 
           GPA should contain value from 0 to 5.
         </div>
       </div>

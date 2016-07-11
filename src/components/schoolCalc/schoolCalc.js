@@ -83,22 +83,26 @@ export default class SchoolCalc extends Component {
   render() {    
     return (
       <div className='calc-container'>
-        <h3>Average GPA across all grades {this.state.GPA}</h3>
+        <h2>Average GPA across all grades - <span className='calc-GPA'>{this.state.GPA}</span></h2>
+        
         <div className='calc-links-container'>
           {this.state.grades.map((item, i) => (
-              <span key={i} >
+              <div  key={i} className={this.state.visible === i ? 'calc-active-link' : ''}>
                 <button key={i} value={i} onClick={::this.gradeVisibility}>{item.gradeName}</button>
-                <button key={i+1} value={i} onClick={::this.deleteGrade}>x</button>
-              </span>
+                <button className='calc-grade-del' key={i+1} value={i} onClick={::this.deleteGrade}>
+                  X</button>
+              </div>
             )
           )}
-          <button onClick={::this.addGrade}>+</button>
+          <button className='calc-grade-add' onClick={::this.addGrade}>+</button>
         </div>
+        <div className='calc-content-container'>
         {this.state.grades.map((item, i) => (
             <Grade key={i} number={i} visible={this.state.visible} data={item}
             gradeNameChange={::this.gradeNameChange} gradeGPAChange={::this.gradeGPAChange} />
           )
         )}
+        </div>
       </div>
     )
   }
