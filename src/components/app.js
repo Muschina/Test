@@ -1,14 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import Domino from './domino/dominoContainer';
 
-const App = ({user}) =>  {
-		return <div>{ user }, hello from Test</div>
-}
+import './app.less';
 
-function mapStateToProps(state) {
-	return {
-		user: state.user
-	}
-}
+const App = () => ( <Domino /> )
 
-export default connect(mapStateToProps)(App);
+export default App;
