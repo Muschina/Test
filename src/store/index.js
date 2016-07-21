@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import domino from '../components/domino/domino.reducer';
 import dominoForm from '../components/domino/components/newDomino/newDominoForm.reducer';
+import formValidate from '../components/domino/components/newDomino/newDominoFormValidate.reducer.js';
 import createLogger from 'redux-logger';
 
 export default function appStore(initialState) {
@@ -8,7 +9,8 @@ export default function appStore(initialState) {
 
 	const store = createStore(combineReducers({
 			domino,
-			dominoForm
+			dominoForm,
+			formValidate
 		}), 
 		initialState,
 		applyMiddleware(log))
